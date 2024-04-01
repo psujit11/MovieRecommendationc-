@@ -1,0 +1,54 @@
+﻿@model IEnumerable<MovieRecommendationApi.Dtos.ReadMovieDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-10 offset-1">
+            <a class="btn btn-sm btn-primary m2 p2" asp-action="AddMovie" asp-controller="Consume">Add Movie</a>
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="bg-dark text-light text-center">
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Genre</th>
+                        <th>Ooperation</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    @if (Model.Count()>0)
+                    {
+                        @foreach(var d in Model)
+                        {
+                            <tr>
+                                <td>@d.ID</td>
+                                <td>@d.Title</td>
+                                <td>@d.Description</td>
+                                <td>@d.Genre</td>
+                                <td>
+                                    <a class="btn btn-sm btn-primary" asp-action="" asp-controller="" asp-route-id="@d.ID">Edit</a>
+                                    <a class="btn btn-sm btn-danger" onclick="return confirm('Are you sure,You want to Delete this')" asp-action="" asp-controller="" asp-route-id="@d.ID">Delete</a>
+                                    <a class="btn btn-sm btn-warning" asp-action="" asp-controller="" asp-route-id="@d.ID">Detial</a>
+                                    <a class="btn btn-sm btn-warning" asp-action="Display" asp-controller="Consume" asp-route-genre="@d.Genre">ADD</a>
+                                    <form asp-controller="Consume" asp-action="Watch" method="post">
+                                        <input type="hidden" name="genre" value="@d.Genre" />
+                                        <button type="submit" class="btn btn-sm btn-success">Watch</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr class="text-center">
+                            <td colspan="5"><h2 class="text-warning bg-info">No Record</h2></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

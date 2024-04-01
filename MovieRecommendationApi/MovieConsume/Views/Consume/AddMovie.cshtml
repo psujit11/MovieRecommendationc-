@@ -1,0 +1,38 @@
+﻿@model MovieRecommendationApi.Dtos.CreateMovieDto;
+@{
+    ViewData["Title"] = "Add Movie";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3 border border-dark p-4 rounded rounded-top">
+            <h1>Add the Record</h1>
+            <form method="post" action="AddMovie">
+                <div class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title"></label>
+                    <input type="text" asp-for="Title" class="form-control" placeholder="Enter title">
+                    <span class="text-danger"  asp-validation-for="Title"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description"></label>
+                    <input type="text" asp-for="Description" class="form-control" placeholder="Enter Description">
+                    <span class="text-danger" asp-validation-for="Description"></span>
+                </div>
+                <div class="form-group">
+                    <label>Genre</label>
+                    <select asp-for="Genre" class="form-control">
+                        <option value="Action">Action</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Romance">Romance</option>s
+                        <option value="None">None</option>
+                    </select>
+                    <span  class="text-danger" asp-validation-for="Genre"></span>
+                </div>
+                 <div >
+                    <input type="submit" class="btn btn-sm btn-primary float-right mt-2 p2" value="SUBMIT"/>
+                 </div>  
+            </form>
+        </div>
+    </div>
+</div>
